@@ -10,6 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    let diceArray = [
+        "dice1",
+        "dice2",
+        "dice3",
+        "dice4",
+        "dice5",
+        "dice6"
+    ]
+    
+    
     var randomDiceIndex1: Int = 0
     var randomDiceIndex2: Int = 0
     
@@ -23,18 +33,22 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        diceRoll()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
     //an IBAction tells the code how to change in response to a user action
     //buttons have both actions and outlets
     @IBAction func rollButtonPressed(_ sender: Any) {
+        diceRoll()
+    }
+    
+    func diceRoll() {
         randomDiceIndex1 = Int.random(in: 0...5)
         randomDiceIndex2 = Int.random(in: 0...5)
         
-        print(randomDiceIndex1)
-        print(randomDiceIndex2)
-        
+        diceImageView1.image = UIImage(named: diceArray[randomDiceIndex1])
+        diceImageView2.image = UIImage(named: diceArray[randomDiceIndex2])
     }
     
 }
